@@ -1,0 +1,34 @@
+---
+    - name: install apache php git
+      apt: "name={{ item }} state=present"
+      with_items:
+        - apache2
+        - php
+        - php-mysql
+        - libapache2-mod-php
+        - git
+
+    - name: create document root
+      file:
+        path: "/var/web/html"
+        state: directory
+        owner: rusik
+        mode: '0755'
+
+    - name: remove file (delete file)
+      file:
+        path: /var/www/html/index.html
+        state: absent
+
+    - name: clone repo
+      git:
+        repo: https://github.com/FaztWeb/php-mysql-crud.git
+        dest: /var/www/html
+        force: yes
+        clone: yes
+        update: yes
+
+    - name: set db.php
+      template:
+        src: "files/db.php.j2"
+        dest: "/var/www/html/db.php"
