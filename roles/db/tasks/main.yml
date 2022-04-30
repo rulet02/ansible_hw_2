@@ -66,8 +66,8 @@
         login_user: root
         login_password: "{{ mysql_root_password }}"
 
-handlers:
-- name: restart mariadb
-  service:
-    name: mariadb
-    state: restarted
+    handlers:
+    - name: restart mariadb
+      service:
+        name: mariadb
+        state: restarted
