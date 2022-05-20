@@ -1,5 +1,4 @@
 ---
-mysql_host: "10.10.10.101"
 mysql_user: "rusik"
 mysql_root_password: "password123"
 mysql_bind_address: "0.0.0.0"

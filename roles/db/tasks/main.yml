@@ -40,12 +40,12 @@
         clone: yes
         update: yes
 
-    - name: kostyl 1
-      lineinfile:
-        path: /tmp/git/database/script.sql
-        regexp: '^(.*)CREATE DATABASE(.*)$'
-        line: ''
-        backrefs: yes
+#    - name: kostyl 1
+#      lineinfile:
+#        path: /tmp/git/database/script.sql
+#        regexp: '^(.*)CREATE DATABASE(.*)$'
+#        line: ''
+#        backrefs: yes
 
     - name: remove the existing database
       mysql_db:
@@ -58,7 +58,7 @@
 
     - name: import the database
       mysql_db:
-        name: php_mysql_crud
+        name: all
         state: import
         target: /tmp/git/database/script.sql
         login_unix_socket: /var/run/mysqld/mysqld.sock
