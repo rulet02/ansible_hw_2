@@ -14,14 +14,6 @@
         group: root
         mode: '0644'
 
-#    - name: sets the root password
-#      mysql_user:
-#        name: root
-#        password: "{{ mysql_root_password }}"
-#        host: 'localhost'
-#        check_implicit_admin: true
-#        login_unix_socket: /var/run/mysqld/mysqld.sock
-
     - name: create mysql remote user
       mysql_user:
         name: "{{ mysql_user }}"
@@ -39,13 +31,6 @@
         force: yes
         clone: yes
         update: yes
-
-#    - name: kostyl 1
-#      lineinfile:
-#        path: /tmp/git/database/script.sql
-#        regexp: '^(.*)CREATE DATABASE(.*)$'
-#        line: ''
-#        backrefs: yes
 
     - name: remove the existing database
       mysql_db:
